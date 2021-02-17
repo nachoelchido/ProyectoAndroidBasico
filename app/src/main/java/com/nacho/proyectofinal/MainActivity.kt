@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nacho.proyectofinal.adapters.ReservacionAdapter
+import com.nacho.proyectofinal.listeners.ReservacionListener
 import kotlinx.android.synthetic.main.activity_main.*
-import com.nacho.proyectofinal.ReservacionListener
 
 class MainActivity : AppCompatActivity(), ReservacionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
