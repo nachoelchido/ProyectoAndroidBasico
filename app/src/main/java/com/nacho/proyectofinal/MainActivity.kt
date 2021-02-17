@@ -18,10 +18,6 @@ class MainActivity : AppCompatActivity(), ReservacionListener {
         var db = DataBaseHandler(context)
         val data = db.readData()
 
-        recycler_view.adapter = ReservacionAdapter(data)
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.setHasFixedSize(true)
-
         agregar_resrvacion_btn.setOnClickListener {
             val detailIntent = Intent (this, AgregarReservacionActivity::class.java)
             startActivity(detailIntent)
@@ -34,12 +30,14 @@ class MainActivity : AppCompatActivity(), ReservacionListener {
         var db = DataBaseHandler(context)
         val data = db.readData()
 
-        recycler_view.adapter = ReservacionAdapter(data)
+        val reservacionAdapter = ReservacionAdapter(data)
+        reservacionAdapter.setReservacionListener(this)
+        recycler_view.adapter = reservacionAdapter
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.setHasFixedSize(true)
     }
 
     override fun onClickReservacion(reservacion: Reservacion) {
-        Toast.makeText(this,"Le dio click a ${reservacion.hotel}",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Le dio click a ${reservacion.hotel}",Toast.LENGTH_LONG).show()
     }
 }
